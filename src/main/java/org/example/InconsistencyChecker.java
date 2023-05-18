@@ -1,5 +1,6 @@
 package org.example;
 
+import java.time.Duration;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
@@ -45,6 +46,27 @@ public class InconsistencyChecker {
             }
         }
 
+        // Check for gap between first entry before lunch
+        boolean hasEntryWithHrInicialEqualsToEndLunch = entries.stream()
+                .anyMatch(entry -> entry.getHrInicial().equals(END_LUNCH));
+
+        if(!hasEntryWithHrInicialEqualsToEndLunch){
+            //get first entry after lunch time
+            Optional<Entry> firstEntryAfterEndLunch = entries.stream()
+                    .filter(entry -> entry.getHrInicial().isAfter(END_LUNCH))
+                    .min(Comparator.comparing(entry -> Duration.between(END_LUNCH, entry.getHrInicial()).abs()));
+
+            if (firstEntryAfterEndLunch.isPresent()) {
+                Entry closestEntryAfterEndLunch = firstEntryAfterEndLunch.get();
+
+                Entry inconsistentEntry = new Entry();
+                inconsistentEntry.setHrInicial(END_LUNCH);
+                inconsistentEntry.setHrFinal(closestEntryAfterEndLunch.getHrInicial());
+                inconsistentEntry.setTotalTime(LocalTime.MIN.plusMinutes(ChronoUnit.MINUTES.between(END_LUNCH,inconsistentEntry.getHrFinal())));
+                inconsistentEntry.setInconsistency(true);
+                newEntries.add(inconsistentEntry);
+            }
+        }
 
         // Check for gap between last entry and end of the workday disregarding start of the overtime
         ListIterator<Entry> iterator = entries.listIterator(entries.size());

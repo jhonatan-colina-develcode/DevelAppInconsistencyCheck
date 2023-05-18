@@ -41,18 +41,18 @@ public class Main {
     }
 
     private static void setData(List<Entry> entries){
-    //    entries.add(new Entry(LocalTime.of(7, 50), LocalTime.of(8, 0), LocalTime.of(0, 10))); // hora extra antes de iniciar o trabalho
+        entries.add(new Entry(LocalTime.of(7, 50), LocalTime.of(8, 0), LocalTime.of(0, 10))); // hora extra antes de iniciar o trabalho
         entries.add(new Entry(LocalTime.of(8, 0), LocalTime.of(9, 40), LocalTime.of(1, 40)));
         entries.add(new Entry(LocalTime.of(9, 45), LocalTime.of(10, 0), LocalTime.of(0, 15)));
         entries.add(new Entry(LocalTime.of(10, 0), LocalTime.of(11, 50), LocalTime.of(1, 50)));
-    //    entries.add(new Entry(LocalTime.of(12, 0), LocalTime.of(12, 10), LocalTime.of(0, 10))); // hora extra no almoço
-   //     entries.add(new Entry(LocalTime.of(12, 25), LocalTime.of(12, 30), LocalTime.of(0, 5))); // hora extra no almoço
-        entries.add(new Entry(LocalTime.of(13, 12), LocalTime.of(15, 0), LocalTime.of(1, 48)));
+        entries.add(new Entry(LocalTime.of(12, 0), LocalTime.of(12, 10), LocalTime.of(0, 10))); // hora extra no almoço
+        entries.add(new Entry(LocalTime.of(12, 25), LocalTime.of(12, 30), LocalTime.of(0, 5))); // hora extra no almoço
+        entries.add(new Entry(LocalTime.of(13, 12), LocalTime.of(15, 0), LocalTime.of(1, 47)));
         entries.add(new Entry(LocalTime.of(15, 10), LocalTime.of(16, 30), LocalTime.of(1, 20)));
-        entries.add(new Entry(LocalTime.of(17, 50), LocalTime.of(17, 59), LocalTime.of(0, 9)));
-   //     entries.add(new Entry(LocalTime.of(18, 0), LocalTime.of(19, 0), LocalTime.of(1, 0))); // hora extra pós trabalho
-    //    entries.add(new Entry(LocalTime.of(19, 0), LocalTime.of(20, 0), LocalTime.of(1, 0))); // hora extra pós trabalho
-   //     entries.add(new Entry(LocalTime.of(20, 0), LocalTime.of(20, 30), LocalTime.of(0, 30))); // hora extra pós trabalho
+        entries.add(new Entry(LocalTime.of(17, 50), LocalTime.of(18, 00), LocalTime.of(0, 10)));
+        entries.add(new Entry(LocalTime.of(18, 10), LocalTime.of(19, 0), LocalTime.of(0, 50))); // hora extra pós trabalho
+        entries.add(new Entry(LocalTime.of(19, 0), LocalTime.of(20, 0), LocalTime.of(1, 0))); // hora extra pós trabalho
+        entries.add(new Entry(LocalTime.of(20, 0), LocalTime.of(20, 30), LocalTime.of(0, 30))); // hora extra pós trabalho
     }
 
     private static String formatDuration(Duration duration) {
